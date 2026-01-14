@@ -1,0 +1,8 @@
+{
+  "name": "Jorge Alvim - Direito Médico Premium",
+  "description": "Landing page de alto impacto para advocacia especializada em Direito Médico e da Saúde, com foco em defesa jurídica e preventivo estratégico.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
