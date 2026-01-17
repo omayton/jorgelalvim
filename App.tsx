@@ -28,8 +28,14 @@ interface FAQItem {
   answer: string;
 }
 
-// --- Constants ---
-const PRIMARY_COLOR = '#30455E';
+// --- Safe API Key Access ---
+const getApiKey = () => {
+  try {
+    return process.env.API_KEY || '';
+  } catch (e) {
+    return '';
+  }
+};
 
 // --- Helper Components ---
 
@@ -94,10 +100,10 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex items-center gap-8">
-          <a href="#inicio" className="text-sm font-medium hover:text-[#30455E] transition-colors">Início</a>
-          <a href="#sobre" className="text-sm font-medium hover:text-[#30455E] transition-colors">Sobre</a>
-          <a href="#solucoes" className="text-sm font-medium hover:text-[#30455E] transition-colors">Soluções</a>
-          <a href="#areas" className="text-sm font-medium hover:text-[#30455E] transition-colors">Áreas</a>
+          <a href="#inicio" className="text-sm font-medium hover:text-[#30455E] transition-colors text-white/80">Início</a>
+          <a href="#sobre" className="text-sm font-medium hover:text-[#30455E] transition-colors text-white/80">Sobre</a>
+          <a href="#solucoes" className="text-sm font-medium hover:text-[#30455E] transition-colors text-white/80">Soluções</a>
+          <a href="#areas" className="text-sm font-medium hover:text-[#30455E] transition-colors text-white/80">Áreas</a>
           <Button variant="outline" className="py-2 px-6 text-sm">Agendar Consulta</Button>
         </div>
 
@@ -109,10 +115,10 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="absolute top-full left-0 w-full bg-[#0F172A] border-b border-white/10 p-6 flex flex-col gap-4 animate-in slide-in-from-top duration-300 md:hidden">
-          <a href="#inicio" onClick={() => setIsOpen(false)} className="text-lg">Início</a>
-          <a href="#sobre" onClick={() => setIsOpen(false)} className="text-lg">Sobre</a>
-          <a href="#solucoes" onClick={() => setIsOpen(false)} className="text-lg">Soluções</a>
-          <a href="#areas" onClick={() => setIsOpen(false)} className="text-lg">Áreas</a>
+          <a href="#inicio" onClick={() => setIsOpen(false)} className="text-lg text-white">Início</a>
+          <a href="#sobre" onClick={() => setIsOpen(false)} className="text-lg text-white">Sobre</a>
+          <a href="#solucoes" onClick={() => setIsOpen(false)} className="text-lg text-white">Soluções</a>
+          <a href="#areas" onClick={() => setIsOpen(false)} className="text-lg text-white">Áreas</a>
           <Button variant="primary">Agendar Consulta</Button>
         </div>
       )}
@@ -123,7 +129,6 @@ const Navbar = () => {
 const Hero = () => {
   return (
     <section id="inicio" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-      {/* Background decoration */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#30455E]/20 rounded-full blur-[120px] -mr-64 -mt-32"></div>
       <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#30455E]/10 rounded-full blur-[100px] -ml-32 -mb-32"></div>
 
@@ -134,7 +139,7 @@ const Hero = () => {
             <span className="text-xs font-bold tracking-widest uppercase text-gray-400">Proteção Jurídica de Elite</span>
           </div>
           
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-[1.1]">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-[1.1] text-white">
             Defesa jurídica e <br />
             <span className="text-gradient">preventivo estratégico</span> <br />
             para médicos.
@@ -170,15 +175,13 @@ const Hero = () => {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-transparent opacity-60"></div>
           </div>
-          
-          {/* Mockup Overlay Cards */}
           <div className="absolute -bottom-6 -left-6 md:-left-12 max-w-[280px]">
             <GlassCard className="!p-4 border-[#30455E]/30">
               <div className="flex items-center gap-3 mb-2">
                 <Activity size={20} className="text-[#30455E]" />
                 <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Status de Risco</span>
               </div>
-              <p className="text-sm font-medium">Prevenção ativa contra erros de documentação.</p>
+              <p className="text-sm font-medium text-white/90">Prevenção ativa contra erros de documentação.</p>
             </GlassCard>
           </div>
         </div>
@@ -262,8 +265,6 @@ const AboutSection = () => {
               />
             </div>
           </div>
-          
-          {/* Badge */}
           <div className="absolute top-10 right-10 bg-white p-4 rounded-xl shadow-xl flex items-center gap-3 transform rotate-6 border border-gray-100">
             <Award className="text-[#30455E]" size={32} />
             <div className="leading-tight">
@@ -296,14 +297,14 @@ const PainPointsSection = () => {
               <div className="w-12 h-12 bg-[#30455E]/20 flex items-center justify-center rounded-lg text-[#30455E] mb-6 group-hover:bg-[#30455E] group-hover:text-white transition-colors">
                 {p.icon}
               </div>
-              <h3 className="text-xl font-bold mb-3">{p.title}</h3>
+              <h3 className="text-xl font-bold mb-3 text-white">{p.title}</h3>
               <p className="text-gray-400 text-sm leading-relaxed">{p.desc}</p>
             </GlassCard>
           ))}
         </div>
 
         <div className="mt-16 text-center">
-          <p className="text-2xl font-bold text-white mb-8 italic">“Quando isso acontece, improvisar não é option.”</p>
+          <p className="text-2xl font-bold text-white mb-8 italic">“Quando isso acontece, improvisar não é opção.”</p>
           <Button variant="secondary" className="mx-auto">
             PROTEGER MINHA CARREIRA AGORA
           </Button>
@@ -313,8 +314,8 @@ const PainPointsSection = () => {
   );
 };
 
-const SolutionsSection = id => {
-  const solutions = [
+const SolutionsSection = () => {
+  const solutionsList = [
     "Antecipar riscos antes que se tornem processos",
     "Traduzir a conduta médica com clareza técnica e segurança",
     "Defender com estratégia — não com modelos genéricos",
@@ -325,7 +326,6 @@ const SolutionsSection = id => {
     <section id="solucoes" className="py-24">
       <div className="max-w-7xl mx-auto px-6">
         <div className="bg-[#1e293b] rounded-[3rem] p-8 md:p-16 border border-white/5 relative overflow-hidden">
-          {/* Subtle logo bg */}
           <Shield className="absolute -right-20 -bottom-20 text-[#30455E]/10" size={400} />
 
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -336,10 +336,10 @@ const SolutionsSection = id => {
               </p>
               
               <div className="space-y-4">
-                {solutions.map((s, i) => (
+                {solutionsList.map((s, i) => (
                   <div key={i} className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-[#30455E]/50 transition-all">
-                    <CheckCircle2 className="text-[#30455E] mt-1 flex-shrink-0" />
-                    <span className="text-lg font-medium">{s}</span>
+                    <CheckCircle2 className="text-[#10B981] mt-1 flex-shrink-0" />
+                    <span className="text-lg font-medium text-white">{s}</span>
                   </div>
                 ))}
               </div>
@@ -394,7 +394,7 @@ const OfferSection = () => {
           
           <Shield size={48} className="text-[#30455E]/60 mb-8" />
           
-          <h2 className="text-3xl md:text-5xl font-bold mb-10 max-w-2xl leading-tight">
+          <h2 className="text-3xl md:text-5xl font-bold mb-10 max-w-2xl leading-tight text-white">
             Agende uma consulta jurídica especializada.
           </h2>
           
@@ -443,7 +443,7 @@ const FAQ = () => {
           {faqs.map((faq, i) => (
             <div key={i} className="glass rounded-2xl overflow-hidden border-white/5">
               <button 
-                className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
+                className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors text-white"
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
               >
                 <span className="text-lg font-bold">{faq.question}</span>
@@ -474,7 +474,8 @@ const AIConsultant = () => {
     if (!input) return;
     setLoading(true);
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+      const apiKey = getApiKey();
+      const ai = new GoogleGenAI({ apiKey });
       const result = await ai.models.generateContent({
         model: 'gemini-3-flash-preview',
         contents: input,
@@ -485,7 +486,7 @@ const AIConsultant = () => {
       });
       setResponse(result.text || "Desculpe, não consegui processar sua dúvida agora.");
     } catch (e) {
-      setResponse("Erro ao conectar com o assistente. Por favor, tente agendar uma consulta direta.");
+      setResponse("Para dúvidas jurídicas específicas, por favor, agende uma consulta direta.");
     } finally {
       setLoading(false);
     }
@@ -510,10 +511,10 @@ const AIConsultant = () => {
               <Shield size={20} className="text-white" />
               <span className="font-bold text-white text-sm uppercase tracking-widest">Assistente IA</span>
             </div>
-            <button onClick={() => setShowChat(false)}><X size={20} /></button>
+            <button onClick={() => setShowChat(false)} className="text-white/60 hover:text-white"><X size={20} /></button>
           </div>
           
-          <div className="flex-1 p-6 overflow-y-auto space-y-4">
+          <div className="flex-1 p-6 overflow-y-auto space-y-4 bg-[#0F172A]">
             {response ? (
               <div className="bg-white/5 p-4 rounded-2xl text-sm leading-relaxed text-gray-300">
                 {response}
@@ -532,13 +533,13 @@ const AIConsultant = () => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Ex: Risco de erro em prontuário..."
-                className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-[#30455E]"
+                className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-[#30455E] text-white"
                 onKeyDown={(e) => e.key === 'Enter' && handleAsk()}
               />
               <button 
                 onClick={handleAsk}
                 disabled={loading}
-                className="bg-[#30455E] p-2 rounded-xl"
+                className="bg-[#30455E] p-2 rounded-xl text-white"
               >
                 <ArrowRight size={20} />
               </button>
@@ -557,20 +558,20 @@ const Footer = () => {
         <div className="col-span-1 md:col-span-2">
           <div className="flex items-center gap-3 mb-6">
             <Shield className="text-[#30455E]" size={32} />
-            <span className="font-bold text-2xl tracking-tighter">JORGE ALVIM</span>
+            <span className="font-bold text-2xl tracking-tighter text-white">JORGE ALVIM</span>
           </div>
           <p className="text-gray-400 max-w-sm mb-8 leading-relaxed">
             Advocacia premium especializada em Direito Médico e da Saúde. Atuação ética, técnica e estratégica para a proteção da sua carreira médica.
           </p>
           <div className="flex gap-4">
-            <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-[#30455E] transition-all"><Instagram size={20} /></a>
-            <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-[#30455E] transition-all"><Linkedin size={20} /></a>
-            <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-[#30455E] transition-all"><Mail size={20} /></a>
+            <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-[#30455E] transition-all text-white/60 hover:text-white"><Instagram size={20} /></a>
+            <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-[#30455E] transition-all text-white/60 hover:text-white"><Linkedin size={20} /></a>
+            <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-[#30455E] transition-all text-white/60 hover:text-white"><Mail size={20} /></a>
           </div>
         </div>
 
         <div>
-          <h4 className="font-bold text-lg mb-6">Links Úteis</h4>
+          <h4 className="font-bold text-lg mb-6 text-white">Links Úteis</h4>
           <ul className="space-y-4 text-gray-400 text-sm">
             <li><a href="#inicio" className="hover:text-white transition-colors">Início</a></li>
             <li><a href="#sobre" className="hover:text-white transition-colors">Sobre o Dr. Jorge</a></li>
@@ -580,7 +581,7 @@ const Footer = () => {
         </div>
 
         <div>
-          <h4 className="font-bold text-lg mb-6">Contato</h4>
+          <h4 className="font-bold text-lg mb-6 text-white">Contato</h4>
           <ul className="space-y-4 text-gray-400 text-sm">
             <li className="flex items-center gap-3"><Phone size={16} /> (XX) XXXXX-XXXX</li>
             <li className="flex items-center gap-3"><Mail size={16} /> contato@jorgealvim.adv.br</li>
@@ -604,16 +605,18 @@ const Footer = () => {
 
 export default function App() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#0F172A] text-white">
       <Navbar />
-      <Hero />
-      <ContextSection />
-      <AboutSection />
-      <PainPointsSection />
-      <SolutionsSection />
-      <PracticeAreas />
-      <OfferSection />
-      <FAQ />
+      <main>
+        <Hero />
+        <ContextSection />
+        <AboutSection />
+        <PainPointsSection />
+        <SolutionsSection />
+        <PracticeAreas />
+        <OfferSection />
+        <FAQ />
+      </main>
       <Footer />
       <AIConsultant />
       
