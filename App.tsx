@@ -17,7 +17,8 @@ import {
   ChevronDown,
   MessageSquare,
   Activity,
-  Award
+  Award,
+  Calendar
 } from 'lucide-react';
 import { GoogleGenAI, Type } from "@google/genai";
 
@@ -49,7 +50,7 @@ const Button: React.FC<{
     primary: "bg-[#30455E] text-white hover:bg-[#3d5776] shadow-lg shadow-[#30455E]/20",
     secondary: "bg-white text-[#30455E] hover:bg-gray-100",
     outline: "border-2 border-[#30455E] text-[#30455E] hover:bg-[#30455E] hover:text-white",
-    green: "bg-emerald-600 text-white hover:bg-emerald-700 shadow-lg shadow-emerald-600/20"
+    green: "bg-[#10B981] text-white hover:bg-[#059669] shadow-lg shadow-[#10B981]/20"
   };
   
   return (
@@ -133,7 +134,7 @@ const Hero = () => {
             <span className="text-xs font-bold tracking-widest uppercase text-gray-400">Proteção Jurídica de Elite</span>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-[1.1]">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-[1.1]">
             Defesa jurídica e <br />
             <span className="text-gradient">preventivo estratégico</span> <br />
             para médicos.
@@ -163,8 +164,8 @@ const Hero = () => {
         <div className="relative">
           <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl animate-float">
             <img 
-              src="https://picsum.photos/seed/legalmed/800/1000" 
-              alt="Estética Clínica Premium" 
+              src="https://www.rkdigital.co/wp-content/uploads/2026/01/WhatsApp-Image-2025-12-29-at-19.10.12-2.jpeg" 
+              alt="Dr. Jorge Alvim - Direito Médico" 
               className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-transparent opacity-60"></div>
@@ -194,8 +195,8 @@ const ContextSection = () => {
           <div className="relative group">
             <div className="absolute -inset-1 bg-[#30455E] rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
             <img 
-              src="https://images.unsplash.com/photo-1576091160550-2173dad99901?auto=format&fit=crop&q=80&w=1000" 
-              alt="Prontuário Médico" 
+              src="https://www.rkdigital.co/wp-content/uploads/2026/01/WhatsApp-Image-2025-12-29-at-19.10.11.jpeg" 
+              alt="Prontuário Médico e Segurança Jurídica" 
               className="relative rounded-2xl w-full h-[500px] object-cover"
             />
           </div>
@@ -255,8 +256,8 @@ const AboutSection = () => {
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-4/5 h-4/5 rounded-full overflow-hidden border-4 border-[#30455E] shadow-2xl shadow-[#30455E]/40">
               <img 
-                src="https://picsum.photos/seed/jorgealvim/600/600" 
-                alt="Jorge Alvim" 
+                src="https://www.rkdigital.co/wp-content/uploads/2026/01/WhatsApp-Image-2025-12-29-at-19.10.12-1.jpeg" 
+                alt="Jorge Alvim - Excelência" 
                 className="w-full h-full object-cover"
               />
             </div>
@@ -302,7 +303,7 @@ const PainPointsSection = () => {
         </div>
 
         <div className="mt-16 text-center">
-          <p className="text-2xl font-bold text-white mb-8 italic">“Quando isso acontece, improvisar não é opção.”</p>
+          <p className="text-2xl font-bold text-white mb-8 italic">“Quando isso acontece, improvisar não é option.”</p>
           <Button variant="secondary" className="mx-auto">
             PROTEGER MINHA CARREIRA AGORA
           </Button>
@@ -350,8 +351,8 @@ const SolutionsSection = id => {
 
             <div className="hidden lg:block">
               <div className="grid grid-cols-2 gap-4">
-                <img src="https://picsum.photos/seed/hospital1/400/500" className="rounded-2xl mt-8" alt="Medical context" />
-                <img src="https://picsum.photos/seed/hospital2/400/500" className="rounded-2xl" alt="Medical context" />
+                <img src="https://www.rkdigital.co/wp-content/uploads/2026/01/WhatsApp-Image-2025-12-29-at-19.10.11-1.jpeg" className="rounded-2xl mt-8 w-full object-cover aspect-[4/5]" alt="Medical and Legal approach" />
+                <img src="https://www.rkdigital.co/wp-content/uploads/2026/01/WhatsApp-Image-2025-12-29-at-19.10.12-3.jpeg" className="rounded-2xl w-full object-cover aspect-[4/5]" alt="Legal expertise in medicine" />
               </div>
             </div>
           </div>
@@ -386,27 +387,37 @@ const OfferSection = () => {
   ];
 
   return (
-    <section className="py-24 relative">
-      <div className="max-w-4xl mx-auto px-6">
-        <GlassCard className="text-center relative overflow-hidden border-[#30455E]/40 border-2">
-          <div className="absolute top-0 left-0 w-full h-2 bg-[#30455E]"></div>
-          <Shield size={64} className="mx-auto text-[#30455E] mb-8" />
-          <h2 className="text-4xl font-bold mb-6">Agende uma consulta jurídica especializada.</h2>
+    <section className="py-24 relative bg-[#0F172A]">
+      <div className="max-w-5xl mx-auto px-6">
+        <div className="glass rounded-[2rem] p-10 md:p-16 border-2 border-[#30455E]/40 shadow-2xl relative overflow-hidden text-center flex flex-col items-center">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#30455E] to-transparent opacity-50"></div>
           
-          <div className="text-left space-y-4 mb-10 max-w-lg mx-auto">
+          <Shield size={48} className="text-[#30455E]/60 mb-8" />
+          
+          <h2 className="text-3xl md:text-5xl font-bold mb-10 max-w-2xl leading-tight">
+            Agende uma consulta jurídica especializada.
+          </h2>
+          
+          <div className="space-y-5 mb-12 w-full max-w-md mx-auto">
             {benefits.map((b, i) => (
-              <div key={i} className="flex items-center gap-3">
-                <CheckCircle2 className="text-emerald-500" size={20} />
-                <span className="font-medium text-gray-300">{b}</span>
+              <div key={i} className="flex items-center gap-4 text-left group">
+                <CheckCircle2 className="text-[#10B981] group-hover:scale-110 transition-transform flex-shrink-0" size={24} />
+                <span className="font-medium text-gray-200 text-lg">{b}</span>
               </div>
             ))}
           </div>
 
-          <Button variant="green" className="w-full sm:w-auto text-xl py-6 px-12 uppercase tracking-tighter">
-            📅 AGENDAR CONSULTA AGORA
-          </Button>
-          <p className="mt-6 text-sm text-gray-500">Sua carreira merece a melhor defesa técnica.</p>
-        </GlassCard>
+          <div className="w-full flex justify-center">
+            <Button variant="green" className="py-5 px-10 text-lg uppercase tracking-wider flex items-center gap-3">
+              <Calendar size={20} />
+              AGENDAR CONSULTA AGORA
+            </Button>
+          </div>
+          
+          <p className="mt-8 text-sm text-gray-500 font-medium tracking-widest uppercase">
+            Sua carreira merece a melhor defesa técnica.
+          </p>
+        </div>
       </div>
     </section>
   );
